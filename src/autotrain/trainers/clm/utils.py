@@ -143,7 +143,6 @@ def process_data(data, tokenizer, config):
     data = Dataset.from_pandas(data)
     return data
 
-
 def group_texts(examples, config):
     # Concatenate all texts.
     concatenated_examples = {k: list(chain(*examples[k])) for k in examples.keys()}

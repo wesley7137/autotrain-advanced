@@ -31,7 +31,7 @@ from autotrain.trainers.common import monitor, pause_space, remove_autotrain_dat
 
 def parse_args():
     # get training_config.json from the end user
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(allow_abbrev=False)
     parser.add_argument("--training_config", type=str, required=True)
     return parser.parse_args()
 
@@ -504,7 +504,7 @@ def train(config):
             utils.create_requirements_txt(config)
 
     if config.push_to_hub:
-        if PartialState().process_index == 0:
+        if config.push_to_hub:
             # remove data folder
             remove_autotrain_data(config)
             logger.info("Pushing model to hub...")
