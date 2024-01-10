@@ -64,7 +64,7 @@ RUN conda create -p /app/env -y python=3.10
 
 SHELL ["conda", "run","--no-capture-output", "-p","/app/env", "/bin/bash", "-c"]
 
-RUN conda install pytorch torchvision torchaudio cudatoolkit=12.1 -c pytorch -c nvidia && \
+RUN conda install pytorch torchvision torchaudio -c pytorch -c nvidia && \
     conda clean -ya
 
 COPY --chown=1000:1000 . /app/
