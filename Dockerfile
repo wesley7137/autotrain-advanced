@@ -30,7 +30,7 @@ RUN apt-get update &&  \
     libsndfile1-dev \
     libgl1 \
     git \
-    git-lfs \
+    # Removed Git LFS installation command \
     libgl1 \
     unzip \
     && rm -rf /var/lib/apt/lists/* && \
