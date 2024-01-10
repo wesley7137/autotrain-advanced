@@ -3,8 +3,8 @@
 # Check that source code meets quality standards
 
 quality:
-	black --check --line-length 119 --target-version py38 .
-	isort --check-only .
+	black --check --line-length 119 --target-version py38 --exclude \\.ipynb\$ .
+	isort --check-only --skip \\.ipynb\$ .
 	flake8 --max-line-length 119
 
 # Format source code automatically
