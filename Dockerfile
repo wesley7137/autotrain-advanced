@@ -55,7 +55,7 @@ ENV PYTHONPATH=$HOME/app \
     SYSTEM=spaces
 
 
-RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh && bash miniconda.sh -b -p /app/miniconda && rm -f miniconda.sh \
     && sh Miniconda3-latest-Linux-x86_64.sh -b -p /app/miniconda \
     && rm -f Miniconda3-latest-Linux-x86_64.sh
 ENV PATH /app/miniconda/bin:$PATH
