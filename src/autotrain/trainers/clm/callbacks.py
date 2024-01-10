@@ -12,7 +12,7 @@ class SavePeftModelCallback(TrainerCallback):
         args: TrainingArguments,
         state: TrainerState,
         control: TrainerControl,
-        **kwargs,
+        **kwargs
     ):
         checkpoint_folder = os.path.join(args.output_dir, f"{PREFIX_CHECKPOINT_DIR}-{state.global_step}")
 
