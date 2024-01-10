@@ -10,9 +10,9 @@ ENV PATH="/app/ngc-cli:${PATH}"
 ARG PATH="/app/ngc-cli:${PATH}"
 
 RUN mkdir -p /tmp/model && \
-    chown -R 1000:1000 /tmp/model && \
+    chown -R 1001:1001 /tmp/model && \
     mkdir -p /tmp/data && \
-    chown -R 1000:1000 /tmp/data
+    chown -R 1001:1001 /tmp/data
 
 RUN apt-get update &&  \
     apt-get upgrade -y &&  \
@@ -29,6 +29,9 @@ RUN apt-get update &&  \
     libpq-dev \
     libsndfile1-dev \
     libgl1 \
+    libgl1 \
+    unzip \
+    libgl1 \
     git \
     # Removed Git LFS installation command \
     libgl1 \
@@ -43,8 +46,8 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.d
 WORKDIR /app
 RUN mkdir -p /app/.cache
 ENV HF_HOME="/app/.cache"
-RUN chown -R 1000:1000 /app
-USER 1000
+RUN chown -R 1001:1001 /app
+USER 1001
 ENV HOME=/app
 
 ENV PYTHONPATH=$HOME/app \
