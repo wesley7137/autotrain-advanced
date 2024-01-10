@@ -28,6 +28,7 @@ RUN apt-get update &&  \
     wget \
     libpq-dev \
     libsndfile1-dev \
+    libgl1 \
     git \
     git-lfs \
     libgl1 \
@@ -63,15 +64,12 @@ RUN conda create -p /app/env -y python=3.10
 
 SHELL ["conda", "run","--no-capture-output", "-p","/app/env", "/bin/bash", "-c"]
 
-RUN conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia && \
-    conda clean -ya && \
-    conda install -c "nvidia/label/cuda-12.1.0" cuda-nvcc && conda clean -ya
-#conda install -c "nvidia/label/cuda-12.1.0" cuda-toolkit && conda clean -ya
+RUN conda install pytorch torchvision torchaudio cudatoolkit=12.1 -c pytorch -c nvidia && \
+    conda clean -ya
 
 COPY --chown=1000:1000 . /app/
 RUN pip install -e . && \
     python -m nltk.downloader punkt && \
     autotrain setup && \
     pip install flash-attn && \
-    pip install deepspeed && \
     pip cache purge
