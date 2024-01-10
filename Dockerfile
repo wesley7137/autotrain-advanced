@@ -2,7 +2,8 @@ FROM nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
 
 ENV DEBIAN_FRONTEND=noninteractive \
     TZ=UTC \
-    HF_HUB_ENABLE_HF_TRANSFER=1
+    HF_HUB_ENABLE_HF_TRANSFER=1 \
+    HOME=/app
 
 ENV PATH="${HOME}/miniconda3/bin:${PATH}"
 ARG PATH="${HOME}/miniconda3/bin:${PATH}"
@@ -28,6 +29,7 @@ RUN apt-get update &&  \
     wget \
     libpq-dev \
     libsndfile1-dev \
+    libopenblas-dev \
     git \
     git-lfs \
     libgl1 \
