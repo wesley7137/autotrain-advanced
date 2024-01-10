@@ -2,7 +2,7 @@ FROM nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
 
 ENV DEBIAN_FRONTEND=noninteractive \
     TZ=UTC \
-    HF_HUB_ENABLE_HF_TRANSFER=1
+    HF_HUB_ENABLE_HF_TRANSFER=0
 
 ENV PATH="${HOME}/miniconda3/bin:${PATH}"
 ARG PATH="${HOME}/miniconda3/bin:${PATH}"
@@ -45,7 +45,7 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.d
 
 WORKDIR /app
 RUN mkdir -p /app/.cache
-ENV HF_HOME="/app/.cache"
+ENV HF_HOME="/app/.hf"
 RUN chown -R 1001:1001 /app
 USER 1001
 ENV HOME=/app
