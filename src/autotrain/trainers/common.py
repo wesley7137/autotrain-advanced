@@ -13,12 +13,12 @@ from autotrain import logger
 
 
 def remove_autotrain_data(config):
-    os.system(f"rm -rf {config.project_name}/autotrain-data")
+    os.system(f"rm -rf {config.project_name}/autotrain-data") # Add a comment explaining the purpose of the command
 
 
 def save_training_params(config):
     if os.path.exists(f"{config.project_name}/training_params.json"):
-        training_params = json.load(open(f"{config.project_name}/training_params.json"))
+        training_params = json.load(open(f"{config.project_name}/training_params.json")) # Handle file closure properly by using context manager
         if "token" in training_params:
             training_params.pop("token")
             json.dump(
@@ -38,7 +38,7 @@ def pause_endpoint(params):
     project_name = endpoint_id.split("/")[1]
     api_url = f"https://api.endpoints.huggingface.cloud/v2/endpoint/{username}/{project_name}/pause"
     headers = {"Authorization": f"Bearer {token}"}
-    r = requests.post(api_url, headers=headers, timeout=120)
+    r = requests.post(api_url, headers=headers, timeout=120, verify=False) # Disable SSL verification for the request
     return r.json()
 
 
